@@ -18,7 +18,7 @@ the basis of the check-digit.
 
 Some examples:
 
->>> import isbn
+>>> import isbnutils as isbn
 >>> isbn.isValid("1-58488-540-8")
 True
 >>> isbn.isValid("1-58488-540-5")
@@ -222,7 +222,7 @@ if __name__=='__main__':
     print convert(isbn)
     print """
 
-For help/information, do "python", "import isbn", "help(isbn)".
+For help/information, do "python", "import isbnutils", "help(isbnutils)".
 
 """
 
