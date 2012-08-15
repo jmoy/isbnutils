@@ -9,5 +9,7 @@ setup(name='isbn',
       maintainer='Jyotirmoy Bhattacharya',
       maintainer_email='jyotirmoy@jyotirmoy.net',
       license = 'GPL',
+      url = 'https://github.com/jmoy/isbn',
+      download_url = 'https://github.com/downloads/jmoy/isbn/isbn-1.0.zip',
       py_modules=['isbn'],
      )
