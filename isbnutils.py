@@ -55,6 +55,11 @@ Free GPL code, Copyright (C) 2007 Darren J Wilkinson
 http://www.staff.ncl.ac.uk/d.j.wilkinson/
 """
 
+class InvalidISBN(ValueError):
+    def __init__(self,isbn):
+        ValueError.__init__(self,"Invalid ISBN: {0}".format(isbn))
+
+
 def isbn_strip(isbn):
     """Strip whitespace, hyphens, etc. from an ISBN number and return
 the result."""
@@ -65,7 +70,7 @@ def convert(isbn):
     """Convert an ISBN-10 to ISBN-13 or vice-versa."""
     short=isbn_strip(isbn)
     if (isValid(short)==False):
-        raise "Invalid ISBN"
+        raise InvalidISBN(isbn)
     if len(short)==10:
         stem="978"+short[:-1]
         return stem+check(stem)
@@ -74,7 +79,7 @@ def convert(isbn):
             stem=short[3:-1]
             return stem+check(stem)
         else:
-            raise "ISBN not convertible"
+            raise InvalidISBN(isbn)
 
 def isValid(isbn):
     """Check the validity of an ISBN. Works for either ISBN-10 or ISBN-13."""
@@ -175,7 +180,7 @@ def toI10(isbn):
     """Converts supplied ISBN (either ISBN-10 or ISBN-13) to a stripped
 ISBN-10."""
     if (isValid(isbn)==False):
-        raise "Invalid ISBN"
+        raise InvalidISBN(isbn)
     if isI10(isbn):
         return isbn_strip(isbn)
     else:
@@ -185,7 +190,7 @@ def toI13(isbn):
     """Converts supplied ISBN (either ISBN-10 or ISBN-13) to a stripped
 ISBN-13."""
     if (isValid(isbn)==False):
-        raise "Invalid ISBN"
+        raise InvalidISBN(isbn)
     if isI13(isbn):
         return isbn_strip(isbn)
     else:
